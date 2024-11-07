@@ -1,0 +1,71 @@
+﻿<Window x:Class="Masterpol.Windows.EditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Masterpol.Windows"
+        mc:Ignorable="d"
+        Title="Изменение данных" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Наименование -->
+        <TextBlock Text="Наименование:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+        <TextBox Text="{Binding Partner.name}" Grid.Row="0" Grid.Column="1" Margin="5"/>
+
+        <!-- Тип партнера (выпадающий список) -->
+        <TextBlock Text="Тип партнера:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+        <ComboBox SelectedValue="{Binding Partner.partner_type_id}" 
+          SelectedValuePath="id"
+          DisplayMemberPath="name" 
+          ItemsSource="{Binding PartnerTypes}" 
+          Grid.Row="1" Grid.Column="1" Margin="5"/>
+
+        <!-- Рейтинг -->
+        <TextBlock Text="Рейтинг:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+        <TextBox Text="{Binding Partner.rating}" Grid.Row="2" Grid.Column="1" Margin="5"/>
+
+        <!-- Адрес -->
+        <TextBlock Text="Адрес:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+        <TextBox Text="{Binding Partner.legal_address}" Grid.Row="3" Grid.Column="1" Margin="5"/>
+
+        <!-- Директор -->
+        <TextBlock Text="Директор (ФИО):" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+        <TextBox Text="{Binding Partner.director.last_name}" Grid.Row="4" Grid.Column="1" Margin="5"/>
+        <TextBox Text="{Binding Partner.director.first_name}" Grid.Row="5" Grid.Column="1" Margin="5"/>
+        <TextBox Text="{Binding Partner.director.middle_name}" Grid.Row="6" Grid.Column="1" Margin="5"/>
+
+        
+        <!-- Номер телефона -->
+        <TextBlock Text="Телефон:" Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+        <TextBox Text="{Binding Partner.contact_number}" Grid.Row="8" Grid.Column="1" Margin="5"/>
+
+        <!-- Email -->
+        <TextBlock Text="Email:" Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" Margin="0,5"/>
+        <TextBox Text="{Binding Partner.email}" Grid.Row="9" Grid.Column="1" Margin="5"/>
+
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="10" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5,10,0,0">
+            <Button Content="Сохранить" Margin="5" Click="SaveButton_Click" Style="{StaticResource ButtonStyle}"/>
+            <Button Content="Отмена" Margin="5" Click="CancelButton_Click" Style="{StaticResource ButtonStyle}"/>
+        </StackPanel>
+    </Grid>
+
+</Window>
